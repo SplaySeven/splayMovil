@@ -15,7 +15,7 @@ import {AUTHENTICATE_USER} from '../../recursos/gql/user';
 import {useMutation} from '@apollo/client';
 import {AutoContext} from '../../recursos/context/UsuarioContext';
 
-export default function Login() {
+export default function Login({navigation}) {
   const {SignIn} = useContext(AutoContext);
   const [authenticateUser] = useMutation(AUTHENTICATE_USER);
   GoogleSignin.configure();
@@ -24,7 +24,6 @@ export default function Login() {
       '665609040430-g65or3lc2rvrmltag2tnfqnjmle5fa41.apps.googleusercontent.com',
   });
   async function onGoogleButtonPress() {
-    setCargar(false);
     const {idToken} = await GoogleSignin.signIn();
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
     const google = await auth().signInWithCredential(googleCredential);
@@ -49,7 +48,7 @@ export default function Login() {
       console.log(error);
       navigation.navigate('CrearCuenta', {userUid: user.uid});
     }
-    setCargar(true);
+    
   }
   return (
     <View style={styles.contenido}>

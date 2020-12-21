@@ -8,7 +8,7 @@ import LoginCorreo from '../screens/Main/LoginCorreo';
 import CrearCuentaEmail from '../screens/Main/CrearCuentaEmail';
 
 const Stack = createStackNavigator();
-const AppNavigation = () => (
+const AppNavigation = ({navigation}) => (
   <Stack.Navigator initialRouteName="Login">
     <Stack.Screen
       name="Login"
