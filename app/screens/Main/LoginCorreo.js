@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react';
-import {View,StyleSheet,Alert} from 'react-native';
-import {Button,Text,H1,Input,Form,Item,Toast} from 'native-base';
+import {View, StyleSheet, Alert} from 'react-native';
+import {Text, H1, Input, Form, Item, Toast,Button} from 'native-base';
 import {AutoContext} from '../../recursos/context/UsuarioContext';
 import {AUTHENTICATE_USER} from '../../recursos/gql/user';
 import {useMutation} from '@apollo/client';
@@ -12,7 +12,7 @@ export default function LoginCorreo() {
   const [contrasena, guardarContrasena] = useState('');
   const handleSubmit = async () => {
     if (correo === '' || contrasena === '') {
-      Alert.alert('Todos los campos son obligatorios', [{text: 'Okey'}]);
+      Alert.alert('Todos los campos son obligatorios', 'Alerta', [{text: 'Ok'}]);
       return;
     }
     try {
@@ -31,34 +31,32 @@ export default function LoginCorreo() {
     }
   };
   return (
-   <View style={styles.contenido}>
-       <Text style={styles.titulo}>Splay7</Text>
-       <Form>
-                <Item inlineLabel last style={styles.input}>
-                <Input 
-                autoCapitalize='none'
-                    placeholder="Email"
-                    onChangeText={(texto)=>guardarCorreo(texto)}
-                />
-                </Item>
-                <Item inlineLabel last style={styles.input}>
-                <Input
-                    secureTextEntry={true}
-                    placeholder='Contrasena'
-                    onChangeText={(texto)=>guardarContrasena(texto)}
-                />
-
-                </Item>
-            </Form>
-            <Button
-            style={styles.button}
-            square block
-            onPress={()=>handleSubmit()}>
-                <Text style={styles.botonText}>Iniciar Sesión</Text>
-            </Button>
-
-   </View>
-  );
+    <View style={styles.contenido}>
+      <Text style={styles.titulo}>Splay</Text>
+      <Form>
+        <Item inlineLabel last style={styles.input}>
+          <Input
+            autoCapitalize="none"
+            placeholder="Email"
+            onChangeText={(texto) => guardarCorreo(texto)}
+          />
+        </Item>
+        <Item inlineLabel last style={styles.input}>
+          <Input
+            secureTextEntry={true}
+            placeholder="Contrasena"
+            onChangeText={(texto) => guardarContrasena(texto)}
+          />
+        </Item>
+      </Form>
+      <Button style={styles.button} 
+      square block
+      onPress={()=>handleSubmit()}
+      >
+          <Text style={styles.botonText}>Iniciar Sesión</Text>
+      </Button>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
