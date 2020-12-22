@@ -16,7 +16,7 @@ import {useMutation} from '@apollo/client';
 import {AutoContext} from '../../recursos/context/UsuarioContext';
 
 export default function Login({navigation}) {
-  const {SignIn} = useContext(AutoContext);
+  const {signIn} = useContext(AutoContext);
   const [authenticateUser] = useMutation(AUTHENTICATE_USER);
   GoogleSignin.configure();
   GoogleSignin.configure({
@@ -41,7 +41,6 @@ export default function Login({navigation}) {
           },
         },
       });
-
       const {token} = data.authenticateUser;
       signIn(token);
     } catch (error) {
