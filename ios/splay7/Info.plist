@@ -50,6 +50,10 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>FoodFinder Splay7 requiere photo library access.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>FoodFinder Splay7 requiere camera access to take photo.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>

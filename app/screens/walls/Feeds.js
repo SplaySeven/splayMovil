@@ -12,9 +12,9 @@ import FeedFooter from '../../screens/walls/Feed/FeedFooter';
 import FeedComment from '../../screens/walls/Feed/FeedComment';
 import FeedAddComment from '../../screens/walls/Feed/FeedAddComment';
 const Feeds=()=> {
-    const {data,loading,startPolling,stopPolling}=useQuery(GET_PUBLICATIONS_FOLLOWEDS_FRIENDS);
+    const {data,loading,refetch, startPolling,stopPolling}=useQuery(GET_PUBLICATIONS_FOLLOWEDS_FRIENDS);
     useEffect(() => {
-        startPolling(1000);
+        startPolling(10000);
         return ()=>{
             stopPolling;
         }
@@ -23,7 +23,7 @@ const Feeds=()=> {
     <View style={{flex:1,justifyContent:'center',alignContent:'center'}}>
       <ActivityIndicator size="large"/>
     </View>)
-   console.log(data);
+   
 const {getPublicationsFollersFriends}=data;
     return (
         <View style={styles.Container}>

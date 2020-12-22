@@ -28,15 +28,7 @@ export default function Siguiendo ({navigation}) {
 
   llamarUsuario ();
 
-  useEffect (
-    () => {
-      startPolling (1000);
-      return () => {
-        stopPolling;
-      };
-    },
-    [startPolling, stopPolling]
-  );
+  
 
   const {
     data,

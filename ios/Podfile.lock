@@ -378,12 +378,22 @@ PODS:
   - RNGoogleSignin (5.0.0):
     - GoogleSignIn (~> 5.0.0)
     - React-Core
+  - RNImageCropPicker (0.35.2):
+    - React-Core
+    - React-RCTImage
+    - RNImageCropPicker/QBImagePickerController (= 0.35.2)
+    - TOCropViewController
+  - RNImageCropPicker/QBImagePickerController (0.35.2):
+    - React-Core
+    - React-RCTImage
+    - TOCropViewController
   - RNReanimated (1.13.2):
     - React-Core
   - RNScreens (2.16.1):
     - React-Core
   - RNVectorIcons (7.1.0):
     - React
+  - TOCropViewController (2.5.5)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -443,6 +453,7 @@ DEPENDENCIES:
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - "RNGoogleSignin (from `../node_modules/@react-native-community/google-signin`)"
+  - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
@@ -473,6 +484,7 @@ SPEC REPOS:
     - nanopb
     - OpenSSL-Universal
     - PromisesObjC
+    - TOCropViewController
     - YogaKit
 
 EXTERNAL SOURCES:
@@ -542,6 +554,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-gesture-handler"
   RNGoogleSignin:
     :path: "../node_modules/@react-native-community/google-signin"
+  RNImageCropPicker:
+    :path: "../node_modules/react-native-image-crop-picker"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -608,9 +622,11 @@ SPEC CHECKSUMS:
   RNFBAuth: 4bf9e2c84d2e42651030eb80acf6b32f966f847a
   RNGestureHandler: 9b7e605a741412e20e13c512738a31bd1611759b
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
+  RNImageCropPicker: 9e0bf18cf4184a846fed55747c8e622208b39947
   RNReanimated: e03f7425cb7a38dcf1b644d680d1bfc91c3337ad
   RNScreens: 45c457af3d2ee9e08fc01e70da87e653d46b1198
   RNVectorIcons: bc69e6a278b14842063605de32bec61f0b251a59
+  TOCropViewController: da59f531f8ac8a94ef6d6c0fc34009350f9e8bfe
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 

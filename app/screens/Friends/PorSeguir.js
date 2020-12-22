@@ -28,15 +28,6 @@ const Friend = ({navigation}) => {
     <ActivityIndicator size="large" />
   </View>);
 
-useEffect (
-    () => {
-      startPolling (1000);
-      return () => {
-        stopPolling;
-      };
-    },
-    [startPolling, stopPolling]
-  );
 
   const {getNotFriends} = data;
   const AgregarAmigo =  id => {
