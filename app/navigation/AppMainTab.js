@@ -14,7 +14,7 @@ import Perfil from '../screens/Perfil/profile';
 import Friend from '../screens/Friends/PorSeguir';
 import Publication from '../screens/Publications/Publication';
 import Notification from '../screens/Notifications/Notification';
-import Following from '../screens/Follws/Follwing';
+import Following from '../screens/Friends/Siguiendo';
 import Follw from '../screens/Follws/Follw';
 
 

@@ -33,10 +33,12 @@ const FeedAddComment = props => {
         value={comment}
         onChangeText={texto => setComment (texto)}
       />
-      
-      <TouchableOpacity onPress={() => guardarComentario ()}>
-        <Feather name="send" size={20} color="#ffffff" />
-      </TouchableOpacity>
+     {comment.length > 0 &&(
+ <TouchableOpacity onPress={() => guardarComentario ()}>
+ <Feather name="send" size={20} color="blue" />
+</TouchableOpacity>
+     )}
+     
      
     </View>
   );

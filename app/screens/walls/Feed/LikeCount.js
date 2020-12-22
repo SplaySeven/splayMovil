@@ -18,6 +18,7 @@ const LikeCount = (props) => {
         }
     }, [startPolling,stopPolling]);
     if(loading) return null;
+    
     const {countLikes} = data;
     return (
         <>
