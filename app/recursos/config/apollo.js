@@ -6,12 +6,12 @@ import {Platform} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 const uri =
   Platform.OS === 'ios'
-    ? 'http://localhost:4000/graphql'
+    ? 'http://192.168.1.16:4000/graphql'
     : 'http://10.0.2.2:4000';
 //Conexion o local o herokuapp.com
 const httpLink = createUploadLink({
-  //uri,
-  uri:'https://splayserver.herokuapp.com',
+  uri,
+  //uri:'https://splayserver.herokuapp.com',
   fetch,
 });
 const authLink = setContext(async(_, {headers}) => {

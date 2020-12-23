@@ -34,7 +34,7 @@ const AppNavigation = ({navigation}) => (
       }}
     />
     <Stack.Screen
-      name="CrarCuentaEmail"
+      name="CrearCuentaEmail"
       component={CrearCuentaEmail}
       options={{
         title: 'Crear Cuenta Email',

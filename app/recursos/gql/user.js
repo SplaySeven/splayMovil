@@ -17,9 +17,11 @@ export const NEW_ACCOUNT = gql`
 			gender
 			type
 			uidFirebase
+			avatar
 		}
 	}
 `;
+
 
 export const AUTHENTICATE_USER = gql`
 	mutation authenticateUser($input: authenticateInput) {

@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 
 const Stack=createStackNavigator();
+const ProfileStack=createStackNavigator();
 const Tab=createMaterialBottomTabNavigator();
 //Pantalla
 import Wall from '../screens/walls/wall';
@@ -16,7 +17,7 @@ import Publication from '../screens/Publications/Publication';
 import Notification from '../screens/Notifications/Notification';
 import Following from '../screens/Friends/Siguiendo';
 import Follw from '../screens/Follws/Follw';
-
+import EditPerfilScreen from '../screens/Perfil/editProfile';
 
 const FeedStack=({navigation})=>(
     <Stack.Navigator>
@@ -55,6 +56,50 @@ const FriendStack=({navigation})=>(
             component={Follw}
         />
     </Stack.Navigator>
+);
+
+const PerfilStackScreen=({navigation})=>(
+    <ProfileStack.Navigator
+    screenOptions={{
+        headerStyle:{
+            backgroundColor:'#fff',
+            shadowColor:'#fff',
+            elevation:0,
+        },
+        headerTintColor:'#000',
+    }}>
+        <ProfileStack.Screen
+            name="Perfil"
+            component={Perfil}
+            options={{
+                headerLeft:()=>(
+                    <Icon.Button
+                    name="ios-menu"
+                    size={25}
+                    backgroundColor="#fff"
+                    color="#000"
+                    onpres={()=>{}}
+                    />
+                ),
+                headerRight:()=>(
+                    <MaterialCommunityIcons.Button
+                    name="account-edit"
+                    size={25}
+                    backgroundColor="#fff"
+                    color="#000"
+                    onPress={()=>navigation.navigate('EditProfile')}
+                    />
+                )
+            }}
+        />
+        <ProfileStack.Screen
+        name='EditProfile'
+        options={{
+            title:'Edit Profile'
+        }}
+        component={EditPerfilScreen}
+        />
+        </ProfileStack.Navigator>
 );
 
 const AppMainTab=()=>{
@@ -107,12 +152,14 @@ const AppMainTab=()=>{
         />
         <Tab.Screen
             name="menu"
-            component={Perfil}
+            component={PerfilStackScreen}
             options={{
                 tabBarLabel:"menu",
                 tabBarIcon:({color})=>(
                     <MaterialCommunityIcons name="menu" color={color} size={26}/>
                 ),
+                
+            
             }}
         />
 
