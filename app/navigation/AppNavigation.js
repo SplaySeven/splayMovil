@@ -6,7 +6,7 @@ import Login from '../screens/Main/Login';
 import CrearCuenta from '../screens/Main/CrearCuenta';
 import LoginCorreo from '../screens/Main/LoginCorreo';
 import CrearCuentaEmail from '../screens/Main/CrearCuentaEmail';
-
+import CrearCuentaGoogle from '../screens/Main/CrearCuentaGoogle';
 const Stack = createStackNavigator();
 const AppNavigation = ({navigation}) => (
   <Stack.Navigator initialRouteName="Login">
@@ -38,6 +38,13 @@ const AppNavigation = ({navigation}) => (
       component={CrearCuentaEmail}
       options={{
         title: 'Crear Cuenta Email',
+      }}
+    />
+    <Stack.Screen
+      name="CrearCuentaGoogle"
+      component={CrearCuentaGoogle}
+      options={{
+        title: 'Gmail',
       }}
     />
   </Stack.Navigator>

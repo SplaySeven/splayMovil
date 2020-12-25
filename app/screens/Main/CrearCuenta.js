@@ -5,31 +5,70 @@ import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {GoogleSignin} from '@react-native-community/google-signin';
 import auth from '@react-native-firebase/auth';
-import {ISUSER_FIREBASE} from '../../recursos/gql/user';
+import {
+  ISUSER_FIREBASE,
+  GET_USER,
+  AUTHENTICATE_USER,
+} from '../../recursos/gql/user';
 import {useMutation, useQuery} from '@apollo/client';
 
 const CrearCuenta = ({navigation}) => {
+  const [uid, setUid] = useState('');
+  const [cargar, setCargar] = useState('');
+  const [authenticateUser] = useMutation(AUTHENTICATE_USER);
   GoogleSignin.configure();
   GoogleSignin.configure({
     webClientId:
       '665609040430-g65or3lc2rvrmltag2tnfqnjmle5fa41.apps.googleusercontent.com',
   });
 
-  const handleSubmit = async () => {
+  async function onGoogleButtonPress() {
+    /*
+        const {idToken} = await GoogleSignin.signIn();
+        const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+        const google = await auth().signInWithCredential(googleCredential);
+        const {user} = google;
+        const {uid} = user;
+    */
     const {idToken} = await GoogleSignin.signIn();
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-    const google = await auth().signInWithCredential(googleCredential);
-    const {user} = google;
-    const {uid} = user;
-    
-    const {data, loading, error} = useQuery(ISUSER_FIREBASE, {
-      variables: {uidFirebase: uid}
-    });
-    if(loading||error) return null;
-    console.log(data);
-    const {isUserFirebase} = data;
-    console.log(isUserFirebase);
+    return auth().signInWithCredential(googleCredential);
+  }
+
+  const handleSignIn = () => {
+    onGoogleButtonPress()
+      .then((datos) => {
+        const {uid,displayName,email,photoURL}=datos.user
+        const datosUsuario={
+            uid:uid,
+            displayName:displayName,
+            email:email,
+            photoURL:photoURL,
+        }
+        navigation.navigate('CrearCuentaGoogle', {userUid: datosUsuario});
+       /*
+        const {data,loading,error}=useQuery(ISUSER_FIREBASE,{
+            variables:{uidFirebase:uid}
+        })
+        const{isUserFirebase}=data
+        console.log(isUserFirebase);
+*/
+      })
+      .catch((err) => console.log('error while signing in with Google:', err));
   };
+
+  /*
+   async function validarExisteUsuario(){
+    const {data, loading, error} = await useQuery(ISUSER_FIREBASE, {
+        variables: {uidFirebase: uid},
+      });
+      //if(loading||error) return null
+      const{isUserFirebase}=data
+      console.log(isUserFirebase);
+        
+   }
+    */
+
   return (
     <View style={styles.contenido}>
       <View style={styles.logo}>
@@ -58,7 +97,7 @@ const CrearCuenta = ({navigation}) => {
         }}></View>
       <TouchableOpacity
         style={styles.BottonCorreo}
-        onPress={() => handleSubmit(false)}>
+        onPress={handleSignIn}>
         <Icon name="logo-google" size={25} color="black" />
         <Text style={styles.TextoBtnCorreo}> Regístrate con Google</Text>
       </TouchableOpacity>
